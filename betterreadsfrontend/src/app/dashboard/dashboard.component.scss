@@ -1,0 +1,16 @@
+.show-login-msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2em;
+
+  .message {
+    font-size: x-large;
+  }
+
+  .login-button {
+    width: 25%;
+    height: 50px;
+  }
+}

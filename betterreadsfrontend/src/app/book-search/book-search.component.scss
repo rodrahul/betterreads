@@ -1,0 +1,15 @@
+.search-field {
+  width: 100%;
+}
+
+.book-card {
+  width: 200px;
+  margin-bottom: 0.5em;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-rows: 500px;
+  grid-gap: 20px;
+}

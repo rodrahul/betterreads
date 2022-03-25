@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <div>Betterreads</div>
+
+  <div class="right-side">
+    <div *ngIf="isAuthenticated">
+      <button mat-button routerLink="/dashboard">Dashboard</button>
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+    <button *ngIf="!isAuthenticated" mat-button routerLink="/auth/login">
+      Login
+    </button>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,50 @@
+<mat-card class="example-card">
+  <mat-card-content>
+    <div class="cover">
+      <img
+        class="cover-image"
+        mat-card-image
+        [src]="photoService.getCoverUrl(book)"
+        onerror="this.src='./assets/images/image-not-found.png';"
+        alt="..."
+      />
+    </div>
+
+    <div class="book-details">
+      <div class="title">
+        {{ book.name ? book.name : "Book Not Found" }}
+      </div>
+
+      <mat-list>
+        <div mat-subheader>Authors</div>
+        <mat-list-item
+          *ngFor="let authorName of book.authorNames; let i = index"
+        >
+          <div mat-line>
+            <img
+              class="author-image"
+              [src]="photoService.getAuthorPhoto(book.authorIds[i])"
+              onerror="this.src='./assets/images/image-not-found.png';"
+              alt="..."
+            />
+            {{ authorName }}
+          </div>
+        </mat-list-item>
+      </mat-list>
+
+      <div>
+        {{ book.description }}
+      </div>
+
+      <div class="publish-date">Published Date:</div>
+      {{ book.publishedDate }}
+
+      <div class="user-book-details" *ngIf="isLoggedIn">
+        <app-user-book-details
+          [userBook]="userBook"
+          [bookId]="book.id"
+        ></app-user-book-details>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

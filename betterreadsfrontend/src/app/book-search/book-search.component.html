@@ -1,0 +1,25 @@
+<mat-form-field class="search-field" appearance="outline">
+  <mat-label>Search Book...</mat-label>
+  <input matInput [formControl]="search" />
+  <button
+    *ngIf="search.value"
+    matSuffix
+    mat-icon-button
+    (click)="clearSearch()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<ng-container *ngIf="books !== null && books.length > 0">
+  <h2>Search Results...</h2>
+  <div class="container">
+    <div class="book-card" *ngFor="let book of books">
+      <app-book-simple-card [book]="book"></app-book-simple-card>
+    </div>
+  </div>
+</ng-container>
+
+<div *ngIf="isLoading" class="loading-spinner">
+  <mat-spinner color="primary"> </mat-spinner>
+</div>

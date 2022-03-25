@@ -1,0 +1,39 @@
+<mat-card class="user-status-card mat-elevation-z8">
+  <mat-card-content>
+    <div class="cover">
+      <img
+        class="cover-image"
+        mat-card-image
+        [src]="userBook?.coverUrl"
+        onerror="this.src='./assets/images/image-not-found.png';"
+        alt="..."
+      />
+    </div>
+
+    <div class="book-details">
+      <a [routerLink]="['/book', userBook.bookId]" class="title">
+        {{ userBook.bookName }}
+      </a>
+
+      <mat-list>
+        <div mat-subheader>Authors</div>
+        <mat-list-item
+          *ngFor="let authorName of userBook.authorNames; let i = index"
+        >
+          <div mat-line>
+            {{ authorName }}
+          </div>
+        </mat-list-item>
+      </mat-list>
+
+      <div class="status">Status</div>
+      {{ getReadingStatus() }}
+
+      <div class="rating">
+        <ng-container *ngFor="let index of counter(userBook.rating)">
+          <mat-icon>star</mat-icon>
+        </ng-container>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

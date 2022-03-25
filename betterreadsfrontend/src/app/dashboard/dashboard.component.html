@@ -1,0 +1,15 @@
+<ng-container *ngFor="let userBook of userBooks">
+  <app-user-book-status [userBook]="userBook"></app-user-book-status>
+</ng-container>
+
+<div class="show-login-msg" *ngIf="!(authenticated | async)">
+  <div class="message">Login to track your book reading progress.</div>
+  <button
+    mat-raised-button
+    color="primary"
+    class="login-button"
+    routerLink="/auth/login"
+  >
+    Login
+  </button>
+</div>

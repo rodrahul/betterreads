@@ -1,0 +1,47 @@
+<form class="details-form" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <mat-form-field appearance="outline">
+    <mat-label>Start Date</mat-label>
+    <input matInput formControlName="startedDate" [matDatepicker]="picker" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Completed Date</mat-label>
+    <input
+      matInput
+      [min]="form.get('startedDate').value"
+      formControlName="completedDate"
+      [matDatepicker]="picker2"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="readingStatus">
+      <mat-option value="2-not-started">Not Started</mat-option>
+      <mat-option value="0-reading">Reading</mat-option>
+      <mat-option value="1-completed">Completed</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Rating</mat-label>
+    <mat-select formControlName="rating">
+      <mat-option *ngFor="let rating of ratingOptions" [value]="rating.value">
+        {{ rating.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!form.valid"
+  >
+    Submit
+  </button>
+</form>

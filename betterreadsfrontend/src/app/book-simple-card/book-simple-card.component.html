@@ -1,0 +1,19 @@
+<ng-container *ngIf="book !== null">
+  <mat-card class="book-simple-card">
+    <mat-card-header>
+      <mat-card-title>{{ book.name }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="photoService.getCoverUrl(book)"
+      onerror="this.src='./assets/images/image-not-found.png';"
+      alt="..."
+    />
+
+    <mat-card-actions>
+      <button mat-flat-button color="primary" (click)="navigateToBook()">
+        View Book
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
