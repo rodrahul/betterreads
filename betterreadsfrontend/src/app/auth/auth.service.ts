@@ -25,7 +25,7 @@ export interface AuthResponseData {
 })
 export class AuthService {
   private loginUrl =
-    'http://localhost:8180/auth/realms/quarkus/protocol/openid-connect/token';
+    'http://localhost:8180/auth/realms/hughes/protocol/openid-connect/token';
 
   isLoggedIn = new BehaviorSubject<boolean>(false);
   user = new BehaviorSubject<User>(null);
@@ -38,7 +38,7 @@ export class AuthService {
 
   login(username: string, password: string): Observable<AuthResponseData> {
     let formData = new URLSearchParams();
-    formData.set('client_id', 'quarkus-app');
+    formData.set('client_id', 'MediaTraining');
     formData.set('grant_type', 'password');
     formData.set('username', username);
     formData.set('password', password);
